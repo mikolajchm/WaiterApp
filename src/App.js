@@ -22,7 +22,7 @@ function App() {
        <Container>
         <Header />
         <Routes>
-          <Route extact path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/table/:id" element={<Table />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

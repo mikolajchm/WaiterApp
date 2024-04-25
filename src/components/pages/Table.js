@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 const Table = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { tableId } = useParams();
+  const { id: tableId } = useParams();
   const tableData = useSelector(state => getTablesById(state, tableId));
   const statusOptions = useSelector(getStatus);
   const [status, setStatus] = useState('');
@@ -85,15 +85,19 @@ const Table = () => {
       </Row>
       <Row>
         <Form onSubmit={handleSubmit} className="mb-4">
-          <Row className="my-2">
-            <Form.Select value={status} onChange={handleStatusChange}>
+          <Row className="my-4">
+          <Col  xs="1"><b>Status: </b></Col>
+          <Col xs="3" sm="3">
+            <Form.Select 
+              value={status} onChange={handleStatusChange}>
               {statusOptions.map(({ id, name }) => (
                 <option key={id} value={name}>{name}</option>
               ))}
             </Form.Select>
+          </Col>
           </Row>
           <Row className="mb-4">
-            <Col><b>People: </b></Col>
+            <Col xs="1"><b>People: </b></Col>
             <Col xs="auto">
               <InputGroup>
                 <Form.Control style={{ maxWidth: '50px', marginRight: '-30px' }} value={peopleAmount} onChange={handlePeopleAmountChange} />
@@ -110,7 +114,7 @@ const Table = () => {
           </Row>
           {(showBill || status === 'Busy') && (
             <Row className="my-2">
-              <Col><b>Bill: </b></Col>
+              <Col xs="1"><b>Bill: </b></Col>
               <Col xs="auto">
                 <InputGroup.Text className="border-0 bg-transparent" style={{ marginRight: '-30px' }}>$</InputGroup.Text>
               </Col>

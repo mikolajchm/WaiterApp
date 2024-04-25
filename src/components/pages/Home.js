@@ -2,7 +2,7 @@ import { Container, Row, Card, Col, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { getAllTables } from '../../redux/tablesRedux';
 import { useSelector } from "react-redux";
-import { Form, InputGroup } from 'react-bootstrap';
+
 
 const  Home = () => {
   const tables = useSelector((state) => getAllTables(state));
